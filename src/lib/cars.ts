@@ -45,19 +45,33 @@ export async function getCars(opts?: { featured?: boolean; limit?: number }): Pr
     return cars
   }
 
-  const supabase = createPublicClient()
-  let query = supabase
-    .from('cars')
-    .select('*, car_images(*)')
-    .eq('status', 'available')
-    .order('created_at', { ascending: false })
+  try {
+    const supabase = createPublicClient()
+    let query = supabase
+      .from('cars')
+      .select('*, car_images(*)')
+      .eq('status', 'available')
+      .order('created_at', { ascending: false })
 
-  if (opts?.featured) query = query.eq('featured', true)
-  if (opts?.limit) query = query.limit(opts.limit)
+    if (opts?.featured) query = query.eq('featured', true)
+    if (opts?.limit) query = query.limit(opts.limit)
 
-  const { data, error } = await query
-  if (error) { console.error('[getCars]', error); return [] }
-  return (data as DbCarWithImages[]).map(mapDbCar)
+    const { data, error } = await query
+    if (error || !data || data.length === 0) {
+      console.warn('[getCars] Supabase error or empty – using mock data:', error?.message)
+      let cars = mockCars.filter(c => c.status === 'available')
+      if (opts?.featured) cars = cars.filter(c => c.featured)
+      if (opts?.limit) cars = cars.slice(0, opts.limit)
+      return cars
+    }
+    return (data as DbCarWithImages[]).map(mapDbCar)
+  } catch (err) {
+    console.error('[getCars] Unexpected error – using mock data:', err)
+    let cars = mockCars.filter(c => c.status === 'available')
+    if (opts?.featured) cars = cars.filter(c => c.featured)
+    if (opts?.limit) cars = cars.slice(0, opts.limit)
+    return cars
+  }
 }
 
 // ── Public: fetch single car ─────────────────────────────────────────────────
@@ -66,15 +80,23 @@ export async function getCarById(id: string): Promise<Car | null> {
     return mockCars.find(c => c.id === id) ?? null
   }
 
-  const supabase = createPublicClient()
-  const { data, error } = await supabase
-    .from('cars')
-    .select('*, car_images(*)')
-    .eq('id', id)
-    .single()
+  try {
+    const supabase = createPublicClient()
+    const { data, error } = await supabase
+      .from('cars')
+      .select('*, car_images(*)')
+      .eq('id', id)
+      .single()
 
-  if (error || !data) return null
-  return mapDbCar(data as DbCarWithImages)
+    if (error || !data) {
+      console.warn('[getCarById] Supabase error – trying mock data for id:', id, error?.message)
+      return mockCars.find(c => c.id === id) ?? null
+    }
+    return mapDbCar(data as DbCarWithImages)
+  } catch (err) {
+    console.error('[getCarById] Unexpected error – trying mock data:', err)
+    return mockCars.find(c => c.id === id) ?? null
+  }
 }
 
 // ── Admin: fetch ALL cars (including draft/sold) ─────────────────────────────

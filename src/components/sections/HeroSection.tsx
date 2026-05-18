@@ -36,6 +36,16 @@ export default function HeroSection() {
       {/* Background pattern */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1E2030] via-[#2a2d45] to-[#141622]" />
+        
+        {/* Animated Background Car */}
+        <div className="absolute top-32 left-0 right-0 h-24 pointer-events-none opacity-[0.03]">
+          <div className="animate-drive inline-block">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-48 h-48 text-[#F59E0B]">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2m14 0a2 2 0 1 1-4 0m4 0a2 2 0 1 0-4 0m-10 0a2 2 0 1 1-4 0m4 0a2 2 0 1 0-4 0m10 0h-6" />
+            </svg>
+          </div>
+        </div>
+
         {/* Gold accent circles */}
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-[#F59E0B]/5 blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-[#F59E0B]/8 blur-3xl" />
