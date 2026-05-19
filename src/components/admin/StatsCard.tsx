@@ -10,22 +10,22 @@ interface StatsCardProps {
 }
 
 const colorThemes = {
-  navy: { border: 'border-t-4 border-t-[#1E2030]', glow: 'bg-[#1E2030]/5 text-[#1E2030]', text: 'text-[#1E2030]' },
-  amber: { border: 'border-t-4 border-t-[#F59E0B]', glow: 'bg-[#F59E0B]/10 text-[#D97706]', text: 'text-[#1E2030]' },
-  green: { border: 'border-t-4 border-t-emerald-500', glow: 'bg-emerald-50 text-emerald-600', text: 'text-[#1E2030]' },
-  red:   { border: 'border-t-4 border-t-rose-500', glow: 'bg-rose-50 text-rose-600', text: 'text-[#1E2030]' },
+  navy: { border: 'border-2 border-[#0A0A0A]', glow: 'bg-transparent text-[#0A0A0A]', text: 'text-[#0A0A0A]' },
+  amber: { border: 'border-2 border-[#0A0A0A]', glow: 'bg-transparent text-[#0A0A0A]', text: 'text-[#0A0A0A]' },
+  green: { border: 'border-2 border-[#0A0A0A]', glow: 'bg-transparent text-[#0A0A0A]', text: 'text-[#0A0A0A]' },
+  red:   { border: 'border-2 border-[#0A0A0A]', glow: 'bg-transparent text-[#0A0A0A]', text: 'text-[#0A0A0A]' },
 }
 
 export default function StatsCard({ label, value, icon, color = 'navy', sub, trend }: StatsCardProps) {
   const t = colorThemes[color]
   return (
-    <div className={`bg-white/90 backdrop-blur-md border border-gray-100 ${t.border} rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.035)] hover:-translate-y-1 transition-all duration-300`}>
+    <div className={`bg-white border-2 border-[#0A0A0A] rounded-none p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 transition-all duration-300`}>
       <div className="flex items-center justify-between mb-4">
-        <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${t.glow}`}>
+        <div className={`w-10 h-10 rounded-none flex items-center justify-center border-2 border-[#0A0A0A] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${t.glow}`}>
           {icon}
         </div>
         {trend && (
-          <span className="text-xs font-body font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-600 flex items-center gap-1">
+          <span className="text-xs font-body font-bold px-2.5 py-1 rounded-full border-2 border-[#0A0A0A] bg-white text-[#0A0A0A] uppercase tracking-wider flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
             <svg className="w-3 h-3 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
             </svg>
@@ -33,9 +33,9 @@ export default function StatsCard({ label, value, icon, color = 'navy', sub, tre
           </span>
         )}
       </div>
-      <p className="font-display font-bold text-3.5xl text-[#1E2030] tracking-tight leading-none mb-1.5">{value}</p>
-      <p className="font-body text-xs font-bold text-gray-400 uppercase tracking-wider">{label}</p>
-      {sub && <p className="font-body text-[11px] text-gray-400 mt-1">{sub}</p>}
+      <p className="font-display font-bold text-3.5xl text-[#0A0A0A] tracking-tighter uppercase leading-none mb-1.5">{value}</p>
+      <p className="font-body text-xs font-bold text-[#404040] uppercase tracking-wider">{label}</p>
+      {sub && <p className="font-body text-[11px] text-[#404040] mt-1 font-bold">{sub}</p>}
     </div>
   )
 }

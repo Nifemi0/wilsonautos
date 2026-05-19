@@ -59,25 +59,25 @@ export default function EnquiriesClient({ initialEnquiries, cars }: EnquiriesCli
   }
 
   return (
-    <div className="p-8 max-w-6xl mx-auto space-y-8 bg-[#FBFBFA]/50 min-h-screen">
+    <div className="p-8 max-w-6xl mx-auto space-y-8 bg-[#FAFAFA] min-h-screen">
       {/* Header */}
-      <div className="pb-6 border-b border-gray-100">
-        <span className="text-[11px] font-bold text-[#F59E0B] uppercase tracking-widest">Leads Dashboard</span>
-        <h1 className="font-display font-extrabold text-[#1E2030] text-3.5xl tracking-tight mt-1">Manage Enquiries</h1>
-        <p className="font-body text-gray-400 text-xs mt-0.5">Audit customer lead submissions and reply directly via secure WhatsApp routing.</p>
+      <div className="pb-6 border-b-2 border-[#0A0A0A]">
+        <span className="text-[11px] font-bold text-[#0A0A0A] uppercase tracking-widest">Leads Dashboard</span>
+        <h1 className="font-display font-bold text-[#0A0A0A] text-4xl uppercase tracking-tighter mt-1">Manage Enquiries</h1>
+        <p className="font-body text-[#404040] font-bold text-xs uppercase tracking-widest mt-1">Audit customer lead submissions and reply directly via secure WhatsApp routing.</p>
       </div>
 
       {/* Filters Panel */}
-      <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-[0_4px_25px_rgba(0,0,0,0.01)]">
-        <h3 className="font-display font-bold text-[#1E2030] text-sm mb-4">Filter Leads</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="bg-white border-2 border-[#0A0A0A] rounded-none p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <h3 className="font-display font-bold text-[#0A0A0A] text-xl uppercase tracking-tighter mb-4 pb-2 border-b-2 border-[#0A0A0A]">Filter Leads</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Status filter */}
           <div>
-            <label className="block font-body text-xs font-bold text-gray-400 mb-1.5 uppercase tracking-wider">Status</label>
+            <label className="block font-body text-[10px] font-bold text-[#0A0A0A] mb-2 uppercase tracking-widest">Status</label>
             <select
               value={activeStatus}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="w-full border border-gray-200 rounded-xl px-4 py-2.5 font-body text-sm text-[#1E2030] bg-[#FBFBFA]/50 focus:outline-none focus:border-[#F59E0B] transition-colors"
+              className="w-full border-2 border-[#0A0A0A] rounded-none px-4 py-2.5 font-body text-sm font-bold text-[#0A0A0A] bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:translate-y-[2px] focus:translate-x-[2px] focus:shadow-none transition-all uppercase"
             >
               <option value="all">All Enquiries</option>
               <option value="pending">Pending Review</option>
@@ -87,11 +87,11 @@ export default function EnquiriesClient({ initialEnquiries, cars }: EnquiriesCli
 
           {/* Date range filter */}
           <div>
-            <label className="block font-body text-xs font-bold text-gray-400 mb-1.5 uppercase tracking-wider">Date Submitted</label>
+            <label className="block font-body text-[10px] font-bold text-[#0A0A0A] mb-2 uppercase tracking-widest">Date Submitted</label>
             <select
               value={activeDateRange}
               onChange={(e) => handleFilterChange('dateRange', e.target.value)}
-              className="w-full border border-gray-200 rounded-xl px-4 py-2.5 font-body text-sm text-[#1E2030] bg-[#FBFBFA]/50 focus:outline-none focus:border-[#F59E0B] transition-colors"
+              className="w-full border-2 border-[#0A0A0A] rounded-none px-4 py-2.5 font-body text-sm font-bold text-[#0A0A0A] bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:translate-y-[2px] focus:translate-x-[2px] focus:shadow-none transition-all uppercase"
             >
               <option value="all">All Time</option>
               <option value="today">Today</option>
@@ -102,11 +102,11 @@ export default function EnquiriesClient({ initialEnquiries, cars }: EnquiriesCli
 
           {/* Car filter */}
           <div>
-            <label className="block font-body text-xs font-bold text-gray-400 mb-1.5 uppercase tracking-wider">By Vehicle</label>
+            <label className="block font-body text-[10px] font-bold text-[#0A0A0A] mb-2 uppercase tracking-widest">By Vehicle</label>
             <select
               value={activeCarId}
               onChange={(e) => handleFilterChange('carId', e.target.value)}
-              className="w-full border border-gray-200 rounded-xl px-4 py-2.5 font-body text-sm text-[#1E2030] bg-[#FBFBFA]/50 focus:outline-none focus:border-[#F59E0B] transition-colors"
+              className="w-full border-2 border-[#0A0A0A] rounded-none px-4 py-2.5 font-body text-sm font-bold text-[#0A0A0A] bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:translate-y-[2px] focus:translate-x-[2px] focus:shadow-none transition-all uppercase"
             >
               <option value="all">All Vehicles</option>
               {cars.map((car) => (
@@ -120,19 +120,19 @@ export default function EnquiriesClient({ initialEnquiries, cars }: EnquiriesCli
       </div>
 
       {/* Leads List */}
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+      <div className="bg-white border-2 border-[#0A0A0A] rounded-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
         {localEnquiries.length === 0 ? (
           <div className="text-center py-16">
-            <div className="w-14 h-14 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-gray-400">
+            <div className="w-14 h-14 bg-white border-2 border-[#0A0A0A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-none flex items-center justify-center mx-auto mb-4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="2.5" className="w-6 h-6">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
               </svg>
             </div>
-            <h3 className="font-display font-bold text-[#1E2030] text-lg mb-1">No Enquiries Found</h3>
-            <p className="font-body text-gray-400 text-sm">Try broadening your filter criteria or checking back later.</p>
+            <h3 className="font-display font-bold text-[#0A0A0A] text-xl uppercase tracking-tighter mb-1">No Enquiries Found</h3>
+            <p className="font-body text-[#404040] font-bold text-xs uppercase tracking-widest mt-2">Try broadening your filter criteria or checking back later.</p>
           </div>
         ) : (
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y-2 divide-[#0A0A0A]">
             {localEnquiries.map((enq) => {
               const whatsappUrl = `https://wa.me/${(enq.buyer_phone || '').replace('+', '')}?text=${encodeURIComponent(
                 `Hello ${enq.buyer_name || 'there'}! This is Wilson Express Autos replying to your enquiry about the ${enq.cars ? `${enq.cars.year} ${enq.cars.make} ${enq.cars.model}` : 'vehicle'}.`
@@ -141,35 +141,35 @@ export default function EnquiriesClient({ initialEnquiries, cars }: EnquiriesCli
               const initials = enq.buyer_name ? enq.buyer_name.split(' ').map((n: string) => n[0]).slice(0, 2).join('').toUpperCase() : 'AN'
 
               return (
-                <div key={enq.id} className="p-6 hover:bg-[#FBFBFA]/70 transition-all duration-200">
+                <div key={enq.id} className="p-6 hover:bg-[#FAFAFA] transition-all duration-200">
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                     {/* Buyer Specs */}
                     <div className="flex items-start gap-4 flex-1">
                       {/* Initials Avatar badge */}
-                      <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#1E2030] to-[#2a2d45] flex items-center justify-center text-white font-display font-extrabold text-xs shadow-sm flex-shrink-0">
+                      <div className="w-12 h-12 rounded-none border-2 border-[#0A0A0A] bg-white flex items-center justify-center text-[#0A0A0A] font-display font-bold text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
                         {initials}
                       </div>
 
                       <div className="space-y-1.5 flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                          <h4 className="font-display font-bold text-[#1E2030] text-base leading-tight">
+                          <h4 className="font-display font-bold text-[#0A0A0A] text-lg uppercase tracking-tighter leading-tight">
                             {enq.buyer_name || 'Anonymous Client'}
                           </h4>
-                          <span className="font-body text-xs text-gray-400 font-medium">
+                          <span className="font-body text-[10px] text-[#404040] font-bold uppercase tracking-widest">
                             {timeAgo(enq.created_at)}
                           </span>
                         </div>
                         
                         {enq.cars && (
                           <div className="flex items-center gap-1.5">
-                            <span className="text-[#F59E0B] text-xs font-extrabold font-body uppercase tracking-wider">
+                            <span className="bg-white border-2 border-[#0A0A0A] text-[#0A0A0A] px-2 py-0.5 text-[10px] font-bold font-body uppercase tracking-widest shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mt-1 inline-block">
                               🚘 {enq.cars.year} {enq.cars.make} {enq.cars.model}
                             </span>
                           </div>
                         )}
 
-                        <div className="pt-1.5 max-w-2xl">
-                          <p className="font-body text-gray-600 text-sm whitespace-pre-wrap leading-relaxed bg-[#FBFBFA] p-4 rounded-2xl border border-gray-100/70 shadow-[inset_0_1px_3px_rgba(0,0,0,0.01)] italic">
+                        <div className="pt-3 max-w-2xl">
+                          <p className="font-body text-[#0A0A0A] font-medium text-sm whitespace-pre-wrap leading-relaxed bg-white p-4 rounded-none border-2 border-[#0A0A0A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] italic">
                             &ldquo;{enq.message || 'Requested callback for full specifications.'}&rdquo;
                           </p>
                         </div>
@@ -177,15 +177,15 @@ export default function EnquiriesClient({ initialEnquiries, cars }: EnquiriesCli
                     </div>
 
                     {/* Actions Panel */}
-                    <div className="md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-3 flex-shrink-0 pt-2 md:pt-0">
+                    <div className="md:text-right flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-4 flex-shrink-0 pt-2 md:pt-0">
                       {/* Interactive toggle status button */}
                       <button
                         onClick={() => handleToggleStatus(enq.id, enq.status)}
                         disabled={isPending}
-                        className={`font-body text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-lg transition-all duration-200 border ${
+                        className={`font-body text-[10px] font-bold uppercase tracking-widest px-3.5 py-2 rounded-none border-2 border-[#0A0A0A] transition-all duration-200 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] ${
                           enq.status === 'responded'
-                            ? 'bg-emerald-50 text-emerald-600 border-emerald-100/60'
-                            : 'bg-amber-50 text-amber-600 border-amber-100/60 hover:bg-amber-100/30'
+                            ? 'bg-white text-[#0A0A0A]'
+                            : 'bg-[#0A0A0A] text-white hover:bg-white hover:text-[#0A0A0A]'
                         }`}
                       >
                         {enq.status === 'responded' ? '✓ Responded' : '● Mark Responded'}
@@ -197,7 +197,7 @@ export default function EnquiriesClient({ initialEnquiries, cars }: EnquiriesCli
                             href={whatsappUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 bg-[#25D366] hover:bg-[#22C05E] hover:shadow-[0_4px_12px_rgba(37,211,102,0.2)] text-white font-body text-xs font-bold px-4 py-2 rounded-xl transition-all duration-200 shadow-sm"
+                            className="flex items-center gap-2 bg-[#25D366] text-white border-2 border-[#0A0A0A] hover:bg-[#22C05E] font-body text-xs font-bold px-4 py-2 rounded-full transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase tracking-widest"
                           >
                             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -206,14 +206,14 @@ export default function EnquiriesClient({ initialEnquiries, cars }: EnquiriesCli
                           </a>
                           <a
                             href={`tel:${enq.buyer_phone}`}
-                            className="bg-gray-100 hover:bg-gray-200 text-[#1E2030] font-body text-xs font-bold p-2.5 rounded-xl transition-all duration-200"
+                            className="bg-white border-2 border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white text-[#0A0A0A] font-body text-xs font-bold p-2.5 rounded-full transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                             title="Call Lead"
                           >
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
                               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.46-1.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
                             </svg>
                           </a>
-                        </div>
+                        </div> 
                       )}
                     </div>
                   </div>
