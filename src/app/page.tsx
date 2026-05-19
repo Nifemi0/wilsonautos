@@ -2,10 +2,11 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import HeroSection from '@/components/sections/HeroSection'
 import FeaturedCars from '@/components/sections/FeaturedCars'
-import BrowseBy from '@/components/sections/BrowseBy'
 import WhyChooseUs from '@/components/sections/WhyChooseUs'
+import HowItWorks from '@/components/sections/HowItWorks'
 import Testimonials from '@/components/sections/Testimonials'
 import CTABanner from '@/components/sections/CTABanner'
+import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp'
 
 export default function HomePage() {
   return (
@@ -13,11 +14,12 @@ export default function HomePage() {
       <Navbar />
       <HeroSection />
       <FeaturedCars />
-      <BrowseBy />
+      <HowItWorks />
       <WhyChooseUs />
       <Testimonials />
       <CTABanner />
       <Footer />
+      <FloatingWhatsApp />
     </main>
   )
 }

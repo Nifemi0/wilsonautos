@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.edmunds.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.carpro.com',
+      },
     ],
   },
 }

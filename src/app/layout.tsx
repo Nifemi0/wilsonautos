@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
-import { Syne, Manrope } from 'next/font/google'
+import { Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-syne',
-  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-space-grotesk',
+  weight: ['300', '400', '500', '600', '700'],
 })
 
-const manrope = Manrope({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-manrope',
-  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-inter',
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -40,9 +40,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${manrope.variable}`}
+      className={`${spaceGrotesk.variable} ${inter.variable}`}
     >
-      <body className="antialiased">{children}</body>
+      <body className="antialiased bg-white text-black">{children}</body>
     </html>
   )
 }

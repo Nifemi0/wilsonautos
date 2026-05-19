@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 const makes = ['Toyota', 'Honda', 'Mercedes-Benz', 'BMW', 'Lexus', 'Hyundai']
 const bodyTypes = ['SUV', 'Sedan', 'Pickup', 'Hatchback', 'Bus', 'Coupe']
@@ -32,132 +33,112 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center bg-[#1E2030] overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1E2030] via-[#2a2d45] to-[#141622]" />
+    <section className="relative min-h-screen pt-28 pb-20 bg-[#FAFAFA] overflow-hidden flex items-center">
+      <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Animated Background Car */}
-        <div className="absolute top-32 left-0 right-0 h-24 pointer-events-none opacity-[0.03]">
-          <div className="animate-drive inline-block">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-48 h-48 text-[#F59E0B]">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2m14 0a2 2 0 1 1-4 0m4 0a2 2 0 1 0-4 0m-10 0a2 2 0 1 1-4 0m4 0a2 2 0 1 0-4 0m10 0h-6" />
-            </svg>
-          </div>
-        </div>
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
+          {/* Left Column: Typography & Search */}
+          <div className="max-w-xl">
+            <p className="font-body text-[#0A0A0A] font-medium tracking-widest uppercase text-xs sm:text-sm mb-6 animate-fade-in-up border-l-2 border-[#0A0A0A] pl-4">
+              Premium Auto Gallery // Lagos, NG
+            </p>
+            
+            <h1 className="font-display font-bold text-[#0A0A0A] text-6xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-8 animate-fade-in-up delay-100 uppercase">
+              Curated.<br />
+              <span className="text-[#404040]">Refined.</span><br />
+              Driven.
+            </h1>
+            
+            <p className="font-body text-[#404040] text-lg sm:text-xl leading-relaxed mb-12 animate-fade-in-up delay-200 font-light">
+              We exhibit only the finest tokunbo and Nigerian-used vehicles. Clean aesthetics, cleaner papers.
+            </p>
 
-        {/* Gold accent circles */}
-        <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-[#F59E0B]/5 blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-[#F59E0B]/8 blur-3xl" />
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: 'linear-gradient(#F59E0B 1px, transparent 1px), linear-gradient(90deg, #F59E0B 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 pt-40">
-        <div className="max-w-4xl">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6 animate-fade-in-up">
-            <div className="w-8 h-px bg-[#F59E0B]" />
-            <span className="text-[#F59E0B] font-body font-semibold text-sm tracking-widest uppercase">
-              Wilson Express Autos
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="font-display font-bold text-white text-5xl sm:text-6xl lg:text-7xl leading-[1.05] mb-6 animate-fade-in-up delay-100">
-            Find Your{' '}
-            <span className="text-shimmer">Perfect Car</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className="font-body text-white/70 text-lg sm:text-xl leading-relaxed max-w-2xl mb-12 animate-fade-in-up delay-200">
-            Quality used cars at the best prices in Nigeria. Browse tokunbo and Nigerian-used vehicles from top makes.
-          </p>
-
-          {/* Search Box */}
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:p-6 animate-fade-in-up delay-300">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-              <div>
-                <label className="block text-white/60 font-body text-xs font-medium mb-1.5 uppercase tracking-wide">Make</label>
-                <select
-                  id="hero-make-filter"
-                  value={make}
-                  onChange={(e) => setMake(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-[#F59E0B] transition-colors appearance-none cursor-pointer"
-                >
-                  <option value="" className="bg-[#1E2030]">All Makes</option>
-                  {makes.map((m) => (
-                    <option key={m} value={m} className="bg-[#1E2030]">{m}</option>
-                  ))}
-                </select>
+            {/* Brutalist Search Box */}
+            <div className="bg-white border-2 border-[#0A0A0A] p-6 shadow-[8px_8px_0px_0px_rgba(10,10,10,1)] animate-fade-in-up delay-300">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <div className="flex flex-col">
+                  <label className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0A0A0A] mb-2">Select Make</label>
+                  <select
+                    value={make}
+                    onChange={(e) => setMake(e.target.value)}
+                    className="w-full bg-[#FAFAFA] border border-[#E5E5E5] text-[#0A0A0A] rounded-none px-4 py-3 font-body text-sm focus:outline-none focus:border-[#0A0A0A] focus:ring-1 focus:ring-[#0A0A0A] transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="">Any Make</option>
+                    {makes.map((m) => (
+                      <option key={m} value={m}>{m}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0A0A0A] mb-2">Body Type</label>
+                  <select
+                    value={bodyType}
+                    onChange={(e) => setBodyType(e.target.value)}
+                    className="w-full bg-[#FAFAFA] border border-[#E5E5E5] text-[#0A0A0A] rounded-none px-4 py-3 font-body text-sm focus:outline-none focus:border-[#0A0A0A] focus:ring-1 focus:ring-[#0A0A0A] transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="">Any Type</option>
+                    {bodyTypes.map((t) => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0A0A0A] mb-2">Budget</label>
+                  <select
+                    value={priceRange}
+                    onChange={(e) => setPriceRange(e.target.value)}
+                    className="w-full bg-[#FAFAFA] border border-[#E5E5E5] text-[#0A0A0A] rounded-none px-4 py-3 font-body text-sm focus:outline-none focus:border-[#0A0A0A] focus:ring-1 focus:ring-[#0A0A0A] transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="">Any Price</option>
+                    {priceRanges.map((r) => (
+                      <option key={r.value} value={r.value}>{r.label}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
-              <div>
-                <label className="block text-white/60 font-body text-xs font-medium mb-1.5 uppercase tracking-wide">Body Type</label>
-                <select
-                  id="hero-bodytype-filter"
-                  value={bodyType}
-                  onChange={(e) => setBodyType(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-[#F59E0B] transition-colors appearance-none cursor-pointer"
-                >
-                  <option value="" className="bg-[#1E2030]">All Types</option>
-                  {bodyTypes.map((t) => (
-                    <option key={t} value={t} className="bg-[#1E2030]">{t}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-white/60 font-body text-xs font-medium mb-1.5 uppercase tracking-wide">Price Range</label>
-                <select
-                  id="hero-price-filter"
-                  value={priceRange}
-                  onChange={(e) => setPriceRange(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-[#F59E0B] transition-colors appearance-none cursor-pointer"
-                >
-                  <option value="" className="bg-[#1E2030]">Any Price</option>
-                  {priceRanges.map((r) => (
-                    <option key={r.value} value={r.value} className="bg-[#1E2030]">{r.label}</option>
-                  ))}
-                </select>
-              </div>
+              <button
+                onClick={handleSearch}
+                className="w-full bg-[#0A0A0A] hover:bg-[#404040] text-white font-display font-bold py-4 transition-colors duration-200 text-sm uppercase tracking-widest flex items-center justify-center gap-3"
+              >
+                Explore Collection
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
             </div>
-            <button
-              id="hero-search-btn"
-              onClick={handleSearch}
-              className="w-full bg-[#F59E0B] hover:bg-[#D97706] text-[#1E2030] font-display font-bold py-4 rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-base tracking-wide flex items-center justify-center gap-2"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-5 h-5">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-              </svg>
-              Search Inventory
-            </button>
           </div>
 
-          {/* Stats */}
-          <div className="flex flex-wrap gap-8 mt-12 animate-fade-in-up delay-400">
-            {[
-              { value: '500+', label: 'Cars Sold' },
-              { value: '22', label: 'Cars Available' },
-              { value: '100%', label: 'Verified' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="font-display font-bold text-[#F59E0B] text-3xl">{stat.value}</p>
-                <p className="font-body text-white/60 text-sm">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+          {/* Right Column: Asymmetrical Imagery */}
+          <div className="relative h-[600px] lg:h-[800px] w-full hidden sm:block animate-fade-in delay-500">
+            {/* Background Accent */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#F3F4F6] rounded-full blur-3xl -z-10" />
+            
+            {/* Primary Image */}
+            <div className="absolute top-10 right-0 w-[80%] h-[70%] z-20 overflow-hidden shadow-2xl">
+              <Image
+                src="https://www.edmunds.com/assets/m/mercedes-benz/gle-class-coupe/2021/oem/2021_mercedes-benz_gle-class-coupe_4dr-suv_amg-gle-53_fq_oem_1_600.jpg"
+                alt="Mercedes-Benz 2021 GLE 450 Coupe"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-1000"
+                priority
+              />
+            </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-1.5">
-          <div className="w-1 h-2 bg-[#F59E0B] rounded-full" />
+            {/* Secondary Overlapping Image */}
+            <div className="absolute bottom-10 left-0 w-[60%] h-[40%] z-30 overflow-hidden shadow-2xl border-4 border-[#FAFAFA]">
+              <Image
+                src="https://www.carpro.com/hs-fs/hubfs/2022-LexusRX-350-F-Sport-feature-carprousa.jpg"
+                alt="Lexus RX350 2022 F-Sport"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-1000"
+              />
+            </div>
+            
+            {/* Minimalist Decoration */}
+            <div className="absolute -right-4 bottom-1/4 font-display text-[150px] font-bold text-[#E5E5E5] opacity-50 z-10 select-none rotate-90 origin-bottom-right leading-none tracking-tighter">
+              WILSON
+            </div>
+          </div>
         </div>
       </div>
     </section>

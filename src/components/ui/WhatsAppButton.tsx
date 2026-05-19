@@ -31,8 +31,8 @@ export default function WhatsAppButton({
   }
 
   const variantClasses = {
-    solid: 'bg-[#25D366] hover:bg-[#22C05E] text-white shadow-lg shadow-[#25D366]/30 hover:shadow-[#25D366]/50',
-    outline: 'border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white',
+    solid: 'bg-white hover:bg-[#0A0A0A] text-[#0A0A0A] hover:text-white border-2 border-[#0A0A0A] shadow-[4px_4px_0px_0px_rgba(37,211,102,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1',
+    outline: 'bg-transparent border-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white',
   }
 
   return (
@@ -42,8 +42,8 @@ export default function WhatsAppButton({
       rel="noopener noreferrer"
       id={id}
       className={`
-        inline-flex items-center justify-center font-semibold rounded-2xl
-        transition-all duration-200 hover:scale-105 active:scale-95 font-body
+        inline-flex items-center justify-center font-bold uppercase tracking-widest
+        transition-all duration-200 font-body rounded-full
         ${sizeClasses[size]}
         ${variantClasses[variant]}
         whatsapp-btn

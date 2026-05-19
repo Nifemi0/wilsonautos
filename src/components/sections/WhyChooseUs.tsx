@@ -46,54 +46,54 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 bg-[#F8F8F6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section className="py-24 bg-white border-t border-[#E5E5E5]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Left: Text */}
           <div>
-            <span className="text-[#F59E0B] font-body font-semibold text-sm tracking-widest uppercase block mb-3">
-              Why We&apos;re Different
+            <span className="text-[#0A0A0A] font-body font-bold text-[10px] tracking-widest uppercase block mb-4 border-l-2 border-[#0A0A0A] pl-3">
+              Distinction
             </span>
-            <h2 className="font-display font-bold text-[#1E2030] text-4xl sm:text-5xl mb-6 gold-underline">
-              Why Choose Wilson Express?
+            <h2 className="font-display font-bold text-[#0A0A0A] text-3xl sm:text-4xl mb-8 tracking-tighter uppercase">
+              The Wilson Standard
             </h2>
-            <p className="font-body text-gray-600 text-lg leading-relaxed mb-8">
-              We&apos;re not just selling cars — we&apos;re helping Nigerians drive their dreams.
-              With years of experience and hundreds of satisfied customers, we&apos;ve built a
-              reputation for trust, quality, and unbeatable value.
+            <p className="font-body text-[#404040] text-lg leading-relaxed mb-10">
+              We&apos;re not merely transacting vehicles — we&apos;re facilitating exceptional experiences. 
+              With uncompromising standards and rigorous curation, we&apos;ve established a 
+              benchmark for trust, provenance, and absolute quality.
             </p>
-            <div className="flex flex-col gap-4">
-              {['Clean Papers, No Stress', 'Free Vehicle History Check', 'After-sale Support'].map((point) => (
-                <div key={point} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#F59E0B] flex items-center justify-center flex-shrink-0">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#1E2030" strokeWidth="3" className="w-3.5 h-3.5">
+            <div className="flex flex-col gap-6">
+              {['Meticulous Verification', 'Transparent Provenance', 'Concierge Support'].map((point) => (
+                <div key={point} className="flex items-center gap-4">
+                  <div className="w-8 h-8 border-2 border-[#0A0A0A] flex items-center justify-center flex-shrink-0">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-4 h-4">
                       <polyline points="20 6 9 17 4 12"/>
                     </svg>
                   </div>
-                  <p className="font-body text-[#1E2030] font-medium">{point}</p>
+                  <p className="font-body text-[#0A0A0A] font-bold uppercase tracking-widest text-xs">{point}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Right: Feature Cards */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((feature, i) => (
               <div
                 key={feature.id}
-                className={`p-6 rounded-2xl transition-all duration-200 hover:-translate-y-1 ${
-                  i % 2 === 0 ? 'bg-[#1E2030] text-white' : 'bg-white border border-gray-100 shadow-sm text-[#1E2030]'
+                className={`p-8 border-2 transition-all duration-300 ${
+                  i % 2 === 0 ? 'bg-[#0A0A0A] text-white border-[#0A0A0A]' : 'bg-white border-[#E5E5E5] hover:border-[#0A0A0A] text-[#0A0A0A]'
                 }`}
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-                  i % 2 === 0 ? 'bg-[#F59E0B]/20 text-[#F59E0B]' : 'bg-[#F59E0B]/10 text-[#F59E0B]'
+                <div className={`w-12 h-12 flex items-center justify-center mb-6 border-2 ${
+                  i % 2 === 0 ? 'bg-white text-[#0A0A0A] border-white' : 'bg-[#0A0A0A] text-white border-[#0A0A0A]'
                 }`}>
                   {feature.icon}
                 </div>
-                <h3 className={`font-display font-bold text-base mb-2 ${i % 2 === 0 ? 'text-white' : 'text-[#1E2030]'}`}>
+                <h3 className={`font-display font-bold text-xl mb-3 tracking-tight ${i % 2 === 0 ? 'text-white' : 'text-[#0A0A0A]'}`}>
                   {feature.title}
                 </h3>
-                <p className={`font-body text-sm leading-relaxed ${i % 2 === 0 ? 'text-white/60' : 'text-gray-500'}`}>
+                <p className={`font-body text-xs font-bold uppercase tracking-widest leading-relaxed ${i % 2 === 0 ? 'text-[#E5E5E5]' : 'text-[#404040]'}`}>
                   {feature.description}
                 </p>
               </div>

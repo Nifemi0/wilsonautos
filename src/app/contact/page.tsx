@@ -19,35 +19,35 @@ function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="text-center py-10">
-        <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" className="w-8 h-8">
+      <div className="text-center py-12">
+        <div className="w-16 h-16 border-2 border-[#0A0A0A] flex items-center justify-center mx-auto mb-6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="2" className="w-8 h-8">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
         </div>
-        <h3 className="font-display font-bold text-[#1E2030] text-xl mb-2">Message Sent!</h3>
-        <p className="font-body text-gray-500 text-sm">We&apos;ve opened WhatsApp for you. We&apos;ll respond within minutes.</p>
+        <h3 className="font-display font-bold text-[#0A0A0A] text-2xl mb-2 tracking-tight uppercase">Transmission Secure</h3>
+        <p className="font-body text-[#404040] text-sm">Dialogue initiated. Please proceed to WhatsApp for continuation.</p>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid sm:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid sm:grid-cols-2 gap-6">
         <div>
-          <label className="block font-body text-sm font-medium text-[#1E2030] mb-1.5">Full Name *</label>
+          <label className="block font-body text-[10px] font-bold uppercase tracking-widest text-[#0A0A0A] mb-2">Identification *</label>
           <input
             type="text"
             required
             id="contact-name"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            placeholder="John Doe"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-[#F59E0B] transition-colors"
+            placeholder="Name"
+            className="w-full bg-transparent border-2 border-[#E5E5E5] hover:border-[#0A0A0A] px-4 py-4 font-body text-xs focus:outline-none transition-colors placeholder-[#E5E5E5]"
           />
         </div>
         <div>
-          <label className="block font-body text-sm font-medium text-[#1E2030] mb-1.5">Phone Number *</label>
+          <label className="block font-body text-[10px] font-bold uppercase tracking-widest text-[#0A0A0A] mb-2">Contact Sequence *</label>
           <input
             type="tel"
             required
@@ -55,39 +55,42 @@ function ContactForm() {
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
             placeholder="+234 800 000 0000"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-[#F59E0B] transition-colors"
+            className="w-full bg-transparent border-2 border-[#E5E5E5] hover:border-[#0A0A0A] px-4 py-4 font-body text-xs focus:outline-none transition-colors placeholder-[#E5E5E5]"
           />
         </div>
       </div>
       <div>
-        <label className="block font-body text-sm font-medium text-[#1E2030] mb-1.5">Car You&apos;re Interested In</label>
+        <label className="block font-body text-[10px] font-bold uppercase tracking-widest text-[#0A0A0A] mb-2">Target Asset</label>
         <input
           type="text"
           id="contact-car"
           value={form.car}
           onChange={(e) => setForm({ ...form, car: e.target.value })}
-          placeholder="e.g. Toyota Camry 2019, or Any Available"
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-[#F59E0B] transition-colors"
+          placeholder="e.g. 2019 Toyota Camry"
+          className="w-full bg-transparent border-2 border-[#E5E5E5] hover:border-[#0A0A0A] px-4 py-4 font-body text-xs focus:outline-none transition-colors placeholder-[#E5E5E5]"
         />
       </div>
       <div>
-        <label className="block font-body text-sm font-medium text-[#1E2030] mb-1.5">Message *</label>
+        <label className="block font-body text-[10px] font-bold uppercase tracking-widest text-[#0A0A0A] mb-2">Parameters *</label>
         <textarea
           rows={5}
           required
           id="contact-message"
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          placeholder="Tell us what you're looking for..."
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-[#F59E0B] transition-colors resize-none"
+          placeholder="Specify requirements..."
+          className="w-full bg-transparent border-2 border-[#E5E5E5] hover:border-[#0A0A0A] px-4 py-4 font-body text-xs focus:outline-none transition-colors resize-none placeholder-[#E5E5E5]"
         />
       </div>
       <button
         type="submit"
         id="contact-submit-btn"
-        className="w-full bg-[#1E2030] hover:bg-[#2a2d45] text-white font-display font-bold py-4 rounded-xl transition-all duration-200 hover:scale-[1.01] text-base"
+        className="w-full bg-transparent border-2 border-[#0A0A0A] hover:bg-[#0A0A0A] text-[#0A0A0A] hover:text-white font-body font-bold py-4 text-xs uppercase tracking-widest rounded-full transition-colors flex items-center justify-center gap-3"
       >
-        Send Message via WhatsApp
+        Transmit Signal
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
       </button>
     </form>
   )
@@ -97,62 +100,59 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <div className="pt-20 min-h-screen bg-[#F8F8F6]">
+      <div className="pt-24 min-h-screen bg-white">
         {/* Header */}
-        <div className="bg-[#1E2030] py-16 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage: 'linear-gradient(#F59E0B 1px, transparent 1px), linear-gradient(90deg, #F59E0B 1px, transparent 1px)',
-              backgroundSize: '60px 60px',
-            }}
-          />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span className="text-[#F59E0B] font-body font-semibold text-sm tracking-widest uppercase block mb-3">Get In Touch</span>
-            <h1 className="font-display font-bold text-white text-5xl sm:text-6xl mb-4">Contact Us</h1>
-            <p className="font-body text-white/60 text-lg max-w-xl">
-              We are always ready to help. Reach out via WhatsApp, phone, or the form below.
+        <div className="bg-[#0A0A0A] py-32 relative overflow-hidden">
+          {/* Brutalist diagonal decoration */}
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-white opacity-[0.02] skew-x-[-20deg] translate-x-1/4" />
+          
+          <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 border-l-2 border-white/20 pl-8 ml-4 sm:ml-8">
+            <span className="text-[#E5E5E5] font-body font-bold text-[10px] tracking-widest uppercase block mb-6">Initialize Communication</span>
+            <h1 className="font-display font-bold text-white text-5xl sm:text-7xl mb-6 tracking-tighter uppercase">Contact Portal</h1>
+            <p className="font-body text-[#E5E5E5] text-lg max-w-xl uppercase tracking-wide">
+              Direct access to our concierge team. Rapid response protocols active.
             </p>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid lg:grid-cols-2 gap-12">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="grid lg:grid-cols-2 gap-20">
             {/* Left: Contact Info */}
-            <div className="space-y-6">
+            <div className="space-y-8">
               {/* WhatsApp - Primary CTA */}
-              <div className="bg-[#1E2030] rounded-2xl p-8 text-white">
-                <h2 className="font-display font-bold text-white text-2xl mb-2">Fastest Response</h2>
-                <p className="font-body text-white/60 text-sm mb-6">WhatsApp is the quickest way to reach us. We typically respond within minutes.</p>
+              <div className="bg-[#0A0A0A] border-2 border-[#0A0A0A] p-10 text-white">
+                <p className="font-body text-[#E5E5E5] text-[10px] font-bold uppercase tracking-widest mb-4">Priority Channel</p>
+                <h2 className="font-display font-bold text-white text-3xl mb-8 tracking-tight uppercase">Instant Dialogue</h2>
                 <WhatsAppButton
                   phoneNumber="+2348000000000"
-                  message="Hello Wilson Express Autos! I'd like to inquire about your cars."
-                  label="Chat on WhatsApp"
+                  message="Hello Wilson Express Autos! I'd like to inquire about your inventory."
+                  label="Connect via WhatsApp"
                   size="lg"
                   id="contact-whatsapp-btn"
                 />
               </div>
 
               {/* Contact Details */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm space-y-5">
-                <h3 className="font-display font-bold text-[#1E2030] text-xl">Contact Details</h3>
+              <div className="bg-white border-2 border-[#E5E5E5] p-10 space-y-8">
+                <h3 className="font-display font-bold text-[#0A0A0A] text-2xl uppercase tracking-tight">Coordinates</h3>
                 {[
                   {
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="2" className="w-5 h-5">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.46-1.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
                       </svg>
                     ),
-                    label: 'Phone',
+                    label: 'Voice Channel',
                     value: '+234 800 000 0000',
                     href: 'tel:+2348000000000',
                   },
                   {
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="2" className="w-5 h-5">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                       </svg>
                     ),
-                    label: 'Location',
+                    label: 'Physical Space',
                     value: 'Lagos, Nigeria',
                     href: '#',
                   },
@@ -160,31 +160,31 @@ export default function ContactPage() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="flex items-center gap-4 group"
+                    className="flex items-center gap-6 group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#F59E0B]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#F59E0B]/20 transition-colors">
+                    <div className="w-12 h-12 border-2 border-[#0A0A0A] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0A0A0A] group-hover:text-white transition-colors">
                       {item.icon}
                     </div>
                     <div>
-                      <p className="font-body text-xs text-gray-400">{item.label}</p>
-                      <p className="font-body font-semibold text-[#1E2030] text-sm group-hover:text-[#F59E0B] transition-colors">{item.value}</p>
+                      <p className="font-body text-[10px] font-bold uppercase tracking-widest text-[#404040] mb-1">{item.label}</p>
+                      <p className="font-display font-bold text-[#0A0A0A] text-xl tracking-tight">{item.value}</p>
                     </div>
                   </a>
                 ))}
               </div>
 
               {/* Business Hours */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h3 className="font-display font-bold text-[#1E2030] text-xl mb-4">Business Hours</h3>
-                <dl className="space-y-3">
+              <div className="bg-white border-2 border-[#E5E5E5] p-10">
+                <h3 className="font-display font-bold text-[#0A0A0A] text-2xl mb-8 uppercase tracking-tight">Operating Hours</h3>
+                <dl className="space-y-6">
                   {[
-                    { day: 'Monday – Friday', hours: '8:00 AM – 6:00 PM' },
-                    { day: 'Saturday', hours: '8:00 AM – 6:00 PM' },
-                    { day: 'Sunday', hours: '10:00 AM – 4:00 PM' },
+                    { day: 'Mon – Fri', hours: '08:00 – 18:00' },
+                    { day: 'Saturday', hours: '08:00 – 18:00' },
+                    { day: 'Sunday', hours: '10:00 – 16:00' },
                   ].map((row) => (
-                    <div key={row.day} className="flex justify-between items-center py-2 border-b border-gray-50 last:border-0">
-                      <dt className="font-body text-gray-500 text-sm">{row.day}</dt>
-                      <dd className="font-body font-semibold text-[#1E2030] text-sm">{row.hours}</dd>
+                    <div key={row.day} className="flex justify-between items-center pb-6 border-b-2 border-[#E5E5E5] last:border-0 last:pb-0">
+                      <dt className="font-body text-[10px] font-bold uppercase tracking-widest text-[#404040]">{row.day}</dt>
+                      <dd className="font-display font-bold text-[#0A0A0A] text-xl tracking-tight">{row.hours}</dd>
                     </div>
                   ))}
                 </dl>
@@ -193,9 +193,9 @@ export default function ContactPage() {
 
             {/* Right: Contact Form */}
             <div>
-              <div className="bg-white rounded-2xl p-8 shadow-sm">
-                <h2 className="font-display font-bold text-[#1E2030] text-2xl mb-2">Send Us a Message</h2>
-                <p className="font-body text-gray-500 text-sm mb-6">Fill out the form and we&apos;ll respond via WhatsApp immediately.</p>
+              <div className="bg-white border-2 border-[#E5E5E5] p-10 sm:p-12 sticky top-24">
+                <h2 className="font-display font-bold text-[#0A0A0A] text-3xl mb-4 tracking-tighter uppercase">Submit Directive</h2>
+                <p className="font-body text-[#404040] text-sm mb-10 leading-relaxed">Provide your parameters below. Our algorithm will route your query to the appropriate specialist.</p>
                 <ContactForm />
               </div>
             </div>

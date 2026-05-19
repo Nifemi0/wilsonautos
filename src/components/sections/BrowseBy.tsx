@@ -101,30 +101,30 @@ export default function BrowseBy() {
   return (
     <>
       {/* Browse by Make */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-[#F59E0B] font-body font-semibold text-sm tracking-widest uppercase block mb-3">
+      <section className="py-20 bg-white border-t border-[#404040]">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-[#0A0A0A] font-body font-bold text-[10px] tracking-widest uppercase block mb-4 border-l-2 border-[#0A0A0A] pl-3 inline-block">
               Browse by Brand
             </span>
-            <h2 className="font-display font-bold text-[#1E2030] text-4xl sm:text-5xl">
-              Popular Makes
+            <h2 className="font-display font-bold text-[#0A0A0A] text-4xl sm:text-6xl tracking-tighter uppercase">
+              Popular Marques
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
             {makes.map((make) => (
               <Link
                 key={make.name}
                 href={`/inventory?make=${make.name}`}
-                className="group flex flex-col items-center gap-3 p-5 rounded-2xl border-2 border-transparent bg-[#F8F8F6] hover:border-[#F59E0B] hover:bg-[#F59E0B]/5 transition-all duration-200 hover:-translate-y-1"
+                className="group flex flex-col items-center gap-4 p-8 border-2 border-[#E5E5E5] bg-white hover:border-[#0A0A0A] transition-colors duration-300"
               >
-                <span className="text-3xl">{make.icon}</span>
-                <div className="text-center">
-                  <p className="font-display font-bold text-[#1E2030] text-sm group-hover:text-[#F59E0B] transition-colors leading-tight">
+                <span className="text-4xl grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">{make.icon}</span>
+                <div className="text-center mt-2 border-t border-[#E5E5E5] group-hover:border-[#0A0A0A] pt-4 w-full transition-colors duration-300">
+                  <p className="font-display font-bold text-[#0A0A0A] text-lg uppercase tracking-tight">
                     {make.name}
                   </p>
-                  <p className="font-body text-gray-400 text-xs">{make.count} cars</p>
+                  <p className="font-body text-[#404040] text-[10px] font-bold uppercase tracking-widest mt-1">{make.count} units</p>
                 </div>
               </Link>
             ))}
@@ -133,34 +133,37 @@ export default function BrowseBy() {
       </section>
 
       {/* Browse by Body Type */}
-      <section className="py-20 bg-[#1E2030] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5"
+      <section className="py-20 bg-[#FAFAFA] border-t border-[#E5E5E5] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.05]"
           style={{
-            backgroundImage: 'radial-gradient(circle, #F59E0B 1px, transparent 1px)',
-            backgroundSize: '30px 30px',
+            backgroundImage: 'radial-gradient(circle, #0A0A0A 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
           }}
         />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-[#F59E0B] font-body font-semibold text-sm tracking-widest uppercase block mb-3">
-              Browse by Style
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-[#0A0A0A] font-body font-bold text-[10px] tracking-widest uppercase block mb-4 border-l-2 border-[#0A0A0A] pl-3 inline-block">
+              Browse by Form
             </span>
-            <h2 className="font-display font-bold text-white text-4xl sm:text-5xl">
-              Vehicle Types
+            <h2 className="font-display font-bold text-[#0A0A0A] text-4xl sm:text-6xl tracking-tighter uppercase">
+              Silhouettes
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
             {bodyTypes.map((type) => (
               <Link
                 key={type.slug}
                 href={`/inventory?bodyType=${type.slug}`}
-                className="group flex flex-col items-center gap-4 p-5 rounded-2xl bg-white/5 hover:bg-[#F59E0B]/20 border border-white/10 hover:border-[#F59E0B]/50 transition-all duration-200 hover:-translate-y-1"
+                className="group flex flex-col items-center gap-6 p-8 border-2 border-[#E5E5E5] bg-white hover:border-[#0A0A0A] transition-colors duration-300 hover:shadow-[8px_8px_0px_0px_rgba(10,10,10,1)]"
               >
-                <div className="group-hover:scale-110 transition-transform duration-200">
-                  {type.icon}
+                <div className="text-[#0A0A0A] opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* Since type.icon is hardcoded with fill='#F59E0B', we will use grayscale filter to make it fit */}
+                  <div className="grayscale group-hover:grayscale-0 transition-all duration-300">
+                    {type.icon}
+                  </div>
                 </div>
-                <p className="font-display font-bold text-white group-hover:text-[#F59E0B] text-sm text-center transition-colors">
+                <p className="font-display font-bold text-[#0A0A0A] text-sm uppercase tracking-widest text-center">
                   {type.name}
                 </p>
               </Link>

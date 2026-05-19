@@ -1,20 +1,19 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-navy: #1E2030;
-  --color-navy-dark: #141622;
-  --color-navy-light: #2a2d45;
-  --color-gold: #F59E0B;
-  --color-gold-light: #FCD34D;
-  --color-gold-dark: #D97706;
-  --color-offwhite: #F8F8F6;
-  --color-offwhite-dark: #EDEDEB;
-  --color-gray-soft: #6B7280;
+  --color-gallery-white: #FAFAFA;
+  --color-gallery-offwhite: #F3F4F6;
+  --color-gallery-black: #0A0A0A;
+  --color-gallery-gray: #404040;
+  --color-gallery-lightgray: #E5E5E5;
+  --color-gold: #0A0A0A; /* Re-purposed to black for the minimal theme */
+  --color-gold-light: #404040;
+  --color-gold-dark: #000000;
   --color-success: #10B981;
   --color-danger: #EF4444;
 
-  --font-display: var(--font-syne), 'Syne', system-ui, sans-serif;
-  --font-body: var(--font-manrope), 'Manrope', system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
 }
 
 * {
@@ -27,14 +26,15 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: #F8F8F6;
-  color: #1E2030;
+  background-color: var(--color-gallery-white);
+  color: var(--color-gallery-black);
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* Custom Scrollbar */

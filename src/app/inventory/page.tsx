@@ -187,18 +187,18 @@ export default function InventoryPage() {
   return (
     <>
       <Navbar />
-      <div className="pt-20 min-h-screen bg-[#F8F8F6]">
+      <div className="pt-24 min-h-screen bg-white">
 
         {/* Header */}
-        <div className="bg-[#1E2030] py-12 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(#F59E0B 1px,transparent 1px),linear-gradient(90deg,#F59E0B 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="font-display font-bold text-white text-4xl sm:text-5xl mb-4">Our Inventory</h1>
+        <div className="bg-[#0A0A0A] py-16 relative overflow-hidden border-b border-[#404040]">
+          <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#FFFFFF 1px,transparent 1px),linear-gradient(90deg,#FFFFFF 1px,transparent 1px)', backgroundSize: '80px 80px' }} />
+          <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="font-display font-bold text-white text-5xl sm:text-7xl mb-6 tracking-tighter uppercase">Our Collection</h1>
 
             {/* Search bar */}
             <div className="relative max-w-xl">
               <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg viewBox="0 0 24 24" fill="none" stroke={searchInput.trim().length >= 2 ? '#F59E0B' : '#9CA3AF'} strokeWidth="2" className="w-5 h-5 transition-colors">
+                <svg viewBox="0 0 24 24" fill="none" stroke={searchInput.trim().length >= 2 ? '#FFFFFF' : '#404040'} strokeWidth="2" className="w-5 h-5 transition-colors">
                   <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
               </div>
@@ -208,41 +208,41 @@ export default function InventoryPage() {
                 value={searchInput}
                 onChange={e => setSearchInput(e.target.value)}
                 placeholder="Search by make, model, year, colour…"
-                className="w-full bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl pl-12 pr-12 py-3.5 font-body text-sm focus:outline-none focus:border-[#F59E0B] focus:bg-white/15 transition-all"
+                className="w-full bg-transparent border-2 border-[#404040] text-white placeholder-[#E5E5E5] pl-12 pr-12 py-4 font-body text-xs font-bold uppercase tracking-widest focus:outline-none focus:border-white transition-all"
               />
               {searchInput && (
                 <button
                   onClick={handleClearSearch}
                   aria-label="Clear search"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white/20 hover:bg-[#F59E0B] flex items-center justify-center transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 bg-white hover:bg-[#E5E5E5] flex items-center justify-center transition-colors"
                 >
-                  <svg viewBox="0 0 10 10" fill="none" stroke="white" strokeWidth="2" className="w-3 h-3">
+                  <svg viewBox="0 0 10 10" fill="none" stroke="#0A0A0A" strokeWidth="2" className="w-3 h-3">
                     <line x1="2" y1="2" x2="8" y2="8"/><line x1="8" y1="2" x2="2" y2="8"/>
                   </svg>
                 </button>
               )}
               {searchInput.trim().length === 1 && (
-                <p className="text-white/40 text-xs font-body mt-2 ml-1">Type at least 2 characters to search</p>
+                <p className="text-[#E5E5E5] text-[10px] font-bold uppercase tracking-widest mt-3 ml-1">Type at least 2 characters to search</p>
               )}
             </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
           {/* Mobile filter toggle */}
-          <div className="lg:hidden mb-5">
+          <div className="lg:hidden mb-6">
             <button
               id="mobile-filter-toggle"
               onClick={() => setDrawerOpen(true)}
-              className="flex items-center gap-2 bg-[#1E2030] text-white px-5 py-3 rounded-xl font-body font-semibold text-sm"
+              className="flex items-center gap-3 bg-transparent border-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white px-6 py-4 font-body font-bold text-xs uppercase tracking-widest transition-colors duration-200"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                 <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/>
               </svg>
               Filters
               {activeCount > 0 && (
-                <span className="bg-[#F59E0B] text-[#1E2030] text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="bg-white text-[#0A0A0A] border-2 border-currentColor text-[10px] font-bold w-5 h-5 flex items-center justify-center">
                   {activeCount}
                 </span>
               )}
@@ -252,18 +252,18 @@ export default function InventoryPage() {
           {/* Mobile Drawer */}
           <div className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${drawerOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}>
             <div
-              className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${drawerOpen ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 bg-black/80 transition-opacity duration-300 ${drawerOpen ? 'opacity-100' : 'opacity-0'}`}
               onClick={() => setDrawerOpen(false)}
             />
-            <div className={`absolute left-0 top-0 bottom-0 w-80 bg-white overflow-y-auto p-6 transition-transform duration-300 ${drawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="font-display font-bold text-[#1E2030] text-xl">Filters</h2>
+            <div className={`absolute left-0 top-0 bottom-0 w-[320px] bg-white border-r-2 border-[#0A0A0A] overflow-y-auto p-8 transition-transform duration-300 ${drawerOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+              <div className="flex items-center justify-between mb-8 pb-4 border-b-2 border-[#E5E5E5]">
+                <h2 className="font-display font-bold text-[#0A0A0A] text-2xl uppercase tracking-tighter">Filters</h2>
                 <button
                   onClick={() => setDrawerOpen(false)}
-                  className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100"
+                  className="w-8 h-8 flex items-center justify-center border-2 border-[#E5E5E5] hover:border-[#0A0A0A] transition-colors"
                   aria-label="Close filters"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#1E2030" strokeWidth="2" className="w-4 h-4">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="2" className="w-4 h-4">
                     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
                   </svg>
                 </button>
@@ -278,10 +278,10 @@ export default function InventoryPage() {
             </div>
           </div>
 
-          <div className="flex gap-8">
+          <div className="flex gap-12">
             {/* Desktop sidebar */}
-            <div className="hidden lg:block w-64 flex-shrink-0">
-              <div className="bg-white rounded-2xl p-6 shadow-sm sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
+            <div className="hidden lg:block w-72 flex-shrink-0">
+              <div className="bg-white border-2 border-[#E5E5E5] p-8 sticky top-32 max-h-[calc(100vh-9rem)] overflow-y-auto shadow-[8px_8px_0px_0px_rgba(229,229,229,1)]">
                 <FilterSidebar filters={filters} onChange={handleFilterChange} onReset={handleReset} />
               </div>
             </div>
@@ -299,77 +299,84 @@ export default function InventoryPage() {
               />
 
               {/* Sort + count bar */}
-              <div className="flex items-center justify-between mb-5 bg-white rounded-2xl px-5 py-3 shadow-sm flex-wrap gap-3">
-                <p className="font-body text-gray-500 text-sm">
+              <div className="flex items-center justify-between mb-8 pb-6 border-b-2 border-[#E5E5E5] flex-wrap gap-4">
+                <p className="font-body text-[#0A0A0A] text-xs font-bold uppercase tracking-widest">
                   {isFiltering ? (
-                    <span className="text-[#F59E0B] font-medium animate-pulse">Searching…</span>
+                    <span className="text-[#404040] animate-pulse">Scanning…</span>
                   ) : (
                     <>
-                      Showing <span className="font-semibold text-[#1E2030]">{paginated.length}</span> of{' '}
-                      <span className="font-semibold text-[#1E2030]">{results.length}</span> cars
+                      Showing <span className="text-[#0A0A0A] underline underline-offset-4 decoration-2">{paginated.length}</span> of{' '}
+                      <span className="text-[#0A0A0A] underline underline-offset-4 decoration-2">{results.length}</span> allocations
                     </>
                   )}
                 </p>
-                <select
-                  id="sort-dropdown"
-                  value={sort}
-                  onChange={e => { setSort(e.target.value); setPage(1) }}
-                  className="border border-gray-200 rounded-xl px-3 py-2 font-body text-sm text-[#1E2030] focus:outline-none focus:border-[#F59E0B]"
-                >
-                  <option value="newest">Newest First</option>
-                  <option value="price-asc">Price: Low → High</option>
-                  <option value="price-desc">Price: High → Low</option>
-                  <option value="year-desc">Year: Newest First</option>
-                </select>
+                <div className="relative">
+                  <select
+                    id="sort-dropdown"
+                    value={sort}
+                    onChange={e => { setSort(e.target.value); setPage(1) }}
+                    className="appearance-none bg-transparent border-2 border-[#E5E5E5] hover:border-[#0A0A0A] pl-4 pr-10 py-3 font-body text-xs font-bold uppercase tracking-widest text-[#0A0A0A] focus:outline-none transition-colors cursor-pointer"
+                  >
+                    <option value="newest">Newest First</option>
+                    <option value="price-asc">Price: Ascending</option>
+                    <option value="price-desc">Price: Descending</option>
+                    <option value="year-desc">Year: Newest</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 text-[#0A0A0A]">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
 
               {/* Grid or states */}
               {isFiltering ? (
                 <SkeletonGrid count={6} />
               ) : paginated.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
                   {paginated.map(car => (
                     <CarCard key={car.id} car={car} searchTerm={debouncedSearch} />
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-20 bg-white rounded-2xl shadow-sm">
-                  <div className="w-16 h-16 bg-[#F59E0B]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="2" className="w-8 h-8">
+                <div className="text-center py-32 bg-white border-2 border-[#E5E5E5]">
+                  <div className="w-16 h-16 border-2 border-[#0A0A0A] flex items-center justify-center mx-auto mb-6">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="2" className="w-8 h-8">
                       <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                     </svg>
                   </div>
-                  <h3 className="font-display font-bold text-[#1E2030] text-xl mb-2">No Cars Found</h3>
-                  <p className="font-body text-gray-500 text-sm mb-6 max-w-xs mx-auto">
+                  <h3 className="font-display font-bold text-[#0A0A0A] text-2xl mb-4 tracking-tight uppercase">Null Result</h3>
+                  <p className="font-body text-[#404040] text-sm mb-8 max-w-sm mx-auto leading-relaxed">
                     {debouncedSearch.trim().length >= 2
-                      ? `No results for "${debouncedSearch.trim()}". Try a different search or clear some filters.`
-                      : 'Try adjusting or clearing your filters to see more results.'}
+                      ? `No inventory matches "${debouncedSearch.trim()}". Revise your parameters.`
+                      : 'The current filter configuration yields no allocations.'}
                   </p>
                   <button
                     onClick={handleReset}
-                    className="bg-[#F59E0B] hover:bg-[#D97706] text-[#1E2030] font-body font-bold px-6 py-3 rounded-xl transition-colors"
+                    className="inline-flex bg-transparent border-2 border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white text-[#0A0A0A] font-body font-bold text-xs uppercase tracking-widest px-8 py-4 transition-colors duration-200"
                   >
-                    Clear All Filters
+                    Reset All Filters
                   </button>
                 </div>
               )}
 
               {/* Pagination */}
               {!isFiltering && totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 mt-10">
+                <div className="flex items-center justify-center gap-4 mt-16 pt-8 border-t-2 border-[#E5E5E5]">
                   <button
                     onClick={() => { setPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
                     disabled={page === 1}
-                    className="w-10 h-10 rounded-xl border border-gray-200 flex items-center justify-center disabled:opacity-40 hover:border-[#F59E0B] hover:text-[#F59E0B] transition-all"
+                    className="w-12 h-12 border-2 border-[#E5E5E5] bg-white flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-colors duration-200"
                     aria-label="Previous page"
                   >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><polyline points="15 18 9 12 15 6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5"><polyline points="15 18 9 12 15 6"/></svg>
                   </button>
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
                     <button
                       key={p}
                       onClick={() => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-                      className={`w-10 h-10 rounded-xl text-sm font-body font-semibold transition-all ${p === page ? 'bg-[#1E2030] text-white' : 'border border-gray-200 text-gray-600 hover:border-[#F59E0B] hover:text-[#F59E0B]'}`}
+                      className={`w-12 h-12 font-body font-bold text-xs transition-colors duration-200 ${p === page ? 'bg-[#0A0A0A] text-white border-2 border-[#0A0A0A]' : 'border-2 border-[#E5E5E5] text-[#0A0A0A] bg-white hover:border-[#0A0A0A]'}`}
                     >
                       {p}
                     </button>
@@ -377,10 +384,10 @@ export default function InventoryPage() {
                   <button
                     onClick={() => { setPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
                     disabled={page === totalPages}
-                    className="w-10 h-10 rounded-xl border border-gray-200 flex items-center justify-center disabled:opacity-40 hover:border-[#F59E0B] hover:text-[#F59E0B] transition-all"
+                    className="w-12 h-12 border-2 border-[#E5E5E5] bg-white flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-colors duration-200"
                     aria-label="Next page"
                   >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><polyline points="9 18 15 12 9 6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5"><polyline points="9 18 15 12 9 6"/></svg>
                   </button>
                 </div>
               )}

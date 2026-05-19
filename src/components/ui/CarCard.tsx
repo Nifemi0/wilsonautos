@@ -24,7 +24,7 @@ export default function CarCard({ car, searchTerm = '' }: CarCardProps) {
   const whatsappUrl = `https://wa.me/${car.whatsappNumber.replace('+', '')}?text=${whatsappMessage}`
 
   return (
-    <article className="bg-white rounded-2xl overflow-hidden car-card shadow-md hover:shadow-2xl group">
+    <article className="bg-white border-2 border-[#E5E5E5] hover:border-[#0A0A0A] transition-colors duration-300 group flex flex-col h-full">
       {/* Image */}
       <div className="relative h-52 overflow-hidden bg-gray-100">
         <Image
@@ -40,15 +40,15 @@ export default function CarCard({ car, searchTerm = '' }: CarCardProps) {
         {/* Badges */}
         <div className="absolute top-3 left-3 flex gap-2 flex-wrap">
           {car.featured && (
-            <span className="bg-[#F59E0B] text-[#1E2030] text-xs font-bold px-2.5 py-1 rounded-full font-body uppercase tracking-wide">
+            <span className="bg-[#0A0A0A] text-white text-[10px] font-bold px-3 py-1 font-body uppercase tracking-widest">
               Featured
             </span>
           )}
           <span
-            className={`text-xs font-bold px-2.5 py-1 rounded-full font-body uppercase tracking-wide ${
+            className={`text-[10px] font-bold px-3 py-1 font-body uppercase tracking-widest ${
               car.status === 'available'
-                ? 'bg-emerald-500 text-white'
-                : 'bg-red-500 text-white'
+                ? 'bg-white text-[#0A0A0A]'
+                : 'bg-[#404040] text-white'
             }`}
           >
             {car.status === 'available' ? 'Available' : 'Sold'}
@@ -57,34 +57,30 @@ export default function CarCard({ car, searchTerm = '' }: CarCardProps) {
 
         {/* Condition badge */}
         <div className="absolute bottom-3 left-3">
-          <span className="bg-[#1E2030]/80 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full font-body capitalize">
-            {car.condition === 'tokunbo' ? '🇺🇸 Tokunbo' : '🇳🇬 Nigerian Used'}
+          <span className="bg-white/90 backdrop-blur-md text-[#0A0A0A] text-[10px] font-bold px-3 py-1 font-body uppercase tracking-widest">
+            {car.condition === 'tokunbo' ? 'Tokunbo' : 'Nigerian Used'}
           </span>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        <div className="flex items-start justify-between mb-3">
-          <div className="flex-1 min-w-0 pr-2">
-            <h2 className="font-display font-bold text-[#1E2030] text-lg leading-tight line-clamp-1">
-              <HighlightText
-                text={`${car.year} ${car.make} ${car.model}`}
-                searchTerm={searchTerm}
-              />
-            </h2>
-            <p className="text-gray-500 text-sm font-body mt-0.5 flex items-center gap-1">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5 flex-shrink-0">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-              </svg>
-              <HighlightText text={car.location} searchTerm={searchTerm} />
-            </p>
-          </div>
-          <div className="text-right flex-shrink-0">
-            <p className="font-display font-bold text-[#F59E0B] text-xl leading-tight">
-              {formatPrice(car.price)}
-            </p>
-          </div>
+      <div className="p-5 flex-1 flex flex-col">
+        <div className="mb-4">
+          <h2 className="font-display font-bold text-[#0A0A0A] text-xl leading-tight line-clamp-1 mb-1">
+            <HighlightText
+              text={`${car.year} ${car.make} ${car.model}`}
+              searchTerm={searchTerm}
+            />
+          </h2>
+          <p className="font-display font-bold text-[#0A0A0A] text-2xl leading-none">
+            {formatPrice(car.price)}
+          </p>
+          <p className="text-[#404040] text-xs font-body mt-2 flex items-center gap-1.5 tracking-wide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <HighlightText text={car.location} searchTerm={searchTerm} />
+          </p>
         </div>
 
         {/* Colour highlight if matching */}
@@ -98,26 +94,26 @@ export default function CarCard({ car, searchTerm = '' }: CarCardProps) {
         )}
 
         {/* Specs row */}
-        <div className="grid grid-cols-3 gap-2 mb-4 py-3 border-t border-b border-gray-100">
-          <div className="text-center">
-            <p className="text-[#1E2030] font-bold text-sm font-body">{formatMileage(car.mileage)}</p>
-            <p className="text-gray-400 text-xs font-body">Mileage</p>
+        <div className="grid grid-cols-3 gap-0 mb-5 border-t border-b border-[#E5E5E5] mt-auto">
+          <div className="text-center py-3 border-r border-[#E5E5E5]">
+            <p className="text-[#0A0A0A] font-bold text-sm font-body">{formatMileage(car.mileage)}</p>
+            <p className="text-[#404040] text-[10px] uppercase tracking-widest font-body mt-0.5">Mileage</p>
           </div>
-          <div className="text-center border-l border-r border-gray-100">
-            <p className="text-[#1E2030] font-bold text-sm font-body capitalize">{car.transmission}</p>
-            <p className="text-gray-400 text-xs font-body">Gearbox</p>
+          <div className="text-center py-3 border-r border-[#E5E5E5]">
+            <p className="text-[#0A0A0A] font-bold text-sm font-body capitalize">{car.transmission}</p>
+            <p className="text-[#404040] text-[10px] uppercase tracking-widest font-body mt-0.5">Gearbox</p>
           </div>
-          <div className="text-center">
-            <p className="text-[#1E2030] font-bold text-sm font-body capitalize">{car.fuelType}</p>
-            <p className="text-gray-400 text-xs font-body">Fuel</p>
+          <div className="text-center py-3">
+            <p className="text-[#0A0A0A] font-bold text-sm font-body capitalize">{car.fuelType}</p>
+            <p className="text-[#404040] text-[10px] uppercase tracking-widest font-body mt-0.5">Fuel</p>
           </div>
         </div>
 
         {/* Actions */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-auto">
           <Link
             href={`/inventory/${getCarSlug(car)}`}
-            className="flex-1 bg-[#1E2030] hover:bg-[#2a2d45] text-white text-sm font-semibold py-2.5 px-4 rounded-xl text-center transition-colors duration-200 font-body"
+            className="flex-1 bg-transparent border-2 border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white text-[#0A0A0A] text-xs uppercase tracking-widest font-bold py-3 px-4 text-center rounded-full transition-colors duration-200 font-body"
           >
             View Details
           </Link>
@@ -126,7 +122,7 @@ export default function CarCard({ car, searchTerm = '' }: CarCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             id={`car-whatsapp-${car.id}`}
-            className="flex items-center justify-center w-11 h-11 bg-[#25D366] hover:bg-[#22C05E] text-white rounded-xl transition-colors duration-200 flex-shrink-0"
+            className="flex items-center justify-center w-12 h-11 border-2 border-[#0A0A0A] bg-white hover:bg-black hover:text-white text-[#0A0A0A] transition-colors duration-200 flex-shrink-0 rounded-full"
             aria-label="Enquire on WhatsApp"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
