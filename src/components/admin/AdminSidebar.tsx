@@ -61,16 +61,16 @@ export default function AdminSidebar() {
   return (
     <>
       {/* Mobile Header & Toggle */}
-      <div className="md:hidden flex items-center justify-between bg-[#0A0A0A] p-4 text-white border-b-2 border-[#0A0A0A]">
+      <div className="md:hidden flex items-center justify-between bg-white p-4 text-[#0A0A0A] border-b border-gray-200">
         <Link href="/admin" className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-white text-[#0A0A0A] rounded-none flex items-center justify-center border-2 border-[#0A0A0A] shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+          <div className="w-8 h-8 bg-gray-100 text-[#0A0A0A] rounded-md flex items-center justify-center border border-gray-200">
             <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4">
               <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
           </div>
-          <span className="font-display font-bold text-sm tracking-tighter uppercase">Wilson Admin</span>
+          <span className="font-display font-semibold text-sm tracking-tight">Wilson Admin</span>
         </Link>
-        <button onClick={() => setIsOpen(!isOpen)} className="p-2 bg-white text-[#0A0A0A] rounded-full border-2 border-[#0A0A0A] shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+        <button onClick={() => setIsOpen(!isOpen)} className="p-2 bg-gray-50 text-[#0A0A0A] rounded-md border border-gray-200">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
             {isOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -82,18 +82,18 @@ export default function AdminSidebar() {
       </div>
 
       {/* Sidebar Content */}
-      <aside className={`${isOpen ? 'block' : 'hidden'} md:flex w-full md:w-64 bg-[#0A0A0A] md:min-h-screen flex-col flex-shrink-0 absolute md:static z-50 h-[calc(100vh-72px)] md:h-auto border-r-2 border-[#0A0A0A]`}>
+      <aside className={`${isOpen ? 'block' : 'hidden'} md:flex w-full md:w-64 bg-white md:min-h-screen flex-col flex-shrink-0 absolute md:static z-50 h-[calc(100vh-72px)] md:h-auto border-r border-gray-200`}>
         {/* Brand (Desktop Only) */}
-        <div className="hidden md:block px-6 py-6 border-b-2 border-white/20">
+        <div className="hidden md:block px-6 py-6 border-b border-gray-200">
           <Link href="/admin" className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-white text-[#0A0A0A] rounded-none flex items-center justify-center border-2 border-[#0A0A0A] shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+            <div className="w-9 h-9 bg-gray-100 text-[#0A0A0A] rounded-lg flex items-center justify-center border border-gray-200">
               <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
                 <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               </svg>
             </div>
             <div>
-              <p className="font-display font-bold text-white text-sm leading-tight tracking-tighter uppercase">Wilson Autos</p>
-              <p className="font-body text-[#E5E5E5] text-xs font-bold uppercase tracking-widest">Admin Panel</p>
+              <p className="font-display font-semibold text-[#0A0A0A] text-sm leading-tight tracking-tight">Wilson Autos</p>
+              <p className="font-body text-gray-500 text-xs font-medium uppercase tracking-wider">Admin Panel</p>
             </div>
           </Link>
         </div>
@@ -110,10 +110,10 @@ export default function AdminSidebar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-none transition-all duration-150 font-body text-sm font-bold uppercase tracking-wider ${
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-150 font-body text-sm font-medium ${
                   isActive
-                    ? 'bg-white text-[#0A0A0A] border-2 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)]'
-                    : 'text-[#E5E5E5] hover:bg-white hover:text-[#0A0A0A] border-2 border-transparent hover:border-white hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)]'
+                    ? 'bg-gray-100 text-[#0A0A0A]'
+                    : 'text-gray-500 hover:bg-gray-50 hover:text-[#0A0A0A]'
                 }`}
               >
                 {item.icon}
@@ -123,13 +123,13 @@ export default function AdminSidebar() {
           })}
 
           {/* Divider */}
-          <div className="border-t-2 border-white/20 my-6" />
+          <div className="border-t border-gray-200 my-4" />
 
           <Link
             href="/"
             target="_blank"
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 rounded-none text-[#E5E5E5] hover:text-[#0A0A0A] hover:bg-white border-2 border-transparent hover:border-white hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] transition-all font-body text-sm font-bold uppercase tracking-wider"
+            className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-500 hover:text-[#0A0A0A] hover:bg-gray-50 transition-all font-body text-sm font-medium"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
               <path d="M18 13v6a2 2 0 0 1-2-2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -140,11 +140,11 @@ export default function AdminSidebar() {
         </nav>
 
         {/* Footer / Logout */}
-        <div className="px-4 py-5 border-t-2 border-white/20">
+        <div className="px-4 py-5 border-t border-gray-200">
           <button
             id="admin-logout-btn"
             onClick={handleLogout}
-            className="flex items-center gap-3 px-4 py-3 rounded-none text-[#E5E5E5] hover:text-white hover:bg-red-600 border-2 border-transparent hover:border-red-600 hover:shadow-[4px_4px_0px_0px_rgba(220,38,38,1)] transition-all w-full font-body text-sm font-bold uppercase tracking-wider"
+            className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-500 hover:text-white hover:bg-red-500 transition-all w-full font-body text-sm font-medium"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
